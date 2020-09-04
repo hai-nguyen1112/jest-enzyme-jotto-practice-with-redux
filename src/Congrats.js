@@ -21,7 +21,7 @@ const Congrats = ({ success }) => {
 };
 
 Congrats.propTypes = {
-  success: PropTypes.bool,
+  success: PropTypes.bool.isRequired,
 };
 
 Congrats.defaultProps = {
