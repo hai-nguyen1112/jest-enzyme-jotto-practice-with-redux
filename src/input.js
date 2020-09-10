@@ -4,7 +4,7 @@ import { guessWord } from './actions';
 
 export class UnconnectedInput extends React.Component {
   state = {
-    currentGuess: null,
+    currentGuess: '',
   };
 
   submitGuessedWord = (e) => {
@@ -12,6 +12,7 @@ export class UnconnectedInput extends React.Component {
     const guessedWord = this.state.currentGuess;
     if (guessedWord && guessedWord.length > 0) {
       this.props.guessWord(guessedWord);
+      this.setState({ currentGuess: '' });
     }
   };
   render() {
