@@ -46,7 +46,7 @@ describe('redux props', () => {
   });
 });
 
-describe('function calls', () => {
+describe('actions get called', () => {
   test('getSecretWord runs on App mount', () => {
     const getSecretWordMock = jest.fn(); /* This is a Jest function that Jest will know what to see then it calls and how */
 
