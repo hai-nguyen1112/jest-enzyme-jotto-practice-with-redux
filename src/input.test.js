@@ -108,3 +108,36 @@ describe('guessWord action creator call', () => {
     expect(wrapper.state('currentGuess')).toBe('');
   });
 });
+
+describe('renders under control of GiveUpButton click', () => {
+  describe('when word has not been guessed and GiveUpButton has not been clicked', () => {
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: false, gaveUp: false };
+      wrapper = setup(initialState);
+    });
+    test('renders input box', () => {
+      const inputBox = findByTestAttr(wrapper, 'input-box');
+      expect(inputBox.length).toBe(1);
+    });
+    test('renders submit button', () => {
+      const submitButton = findByTestAttr(wrapper, 'submit-button');
+      expect(submitButton.length).toBe(1);
+    });
+  });
+  describe('when word has not been guessed and GiveUpButton has been clicked', () => {
+    let wrapper;
+    beforeEach(() => {
+      const initialState = { success: false, gaveUp: true };
+      wrapper = setup(initialState);
+    });
+    test('does not render input box', () => {
+      const inputBox = findByTestAttr(wrapper, 'input-box');
+      expect(inputBox.length).toBe(0);
+    });
+    test('does not render submit button', () => {
+      const submitButton = findByTestAttr(wrapper, 'submit-button');
+      expect(submitButton.length).toBe(0);
+    });
+  });
+});

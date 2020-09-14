@@ -12,4 +12,11 @@ describe('successReducer', () => {
     });
     expect(newState).toBe(true);
   });
+  test('returns state of false upon receiving an action of type RESET_GAME', () => {
+    const initialState = { success: true };
+    const newState = successReducer(initialState, {
+      type: actionTypes.RESET_GAME,
+    });
+    expect(newState).toBe(false);
+  });
 });

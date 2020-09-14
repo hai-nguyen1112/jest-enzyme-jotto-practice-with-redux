@@ -15,7 +15,7 @@ export const checkProps = (component, conformingProps) => {
     'prop',
     component.name
   );
-  expect(propError).toBeUndefined();
+  return propError;
 };
 
 export const storeFactory = (initialState) => {

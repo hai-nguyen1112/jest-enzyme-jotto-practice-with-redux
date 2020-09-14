@@ -63,4 +63,14 @@ describe('if there are words guessed', () => {
     const guessedWordNodes = findByTestAttr(wrapper, 'guessed-word');
     expect(guessedWordNodes.length).toBe(guessedWords.length);
   });
+  test('index starts with 1', () => {
+    const indexNodes = findByTestAttr(wrapper, 'guessed-word-index');
+    const indexTextSet = new Set(
+      indexNodes.map((indexNode) => indexNode.text())
+    );
+    const expectedTextSet = new Set(
+      guessedWords.map((guessWord, index) => (index + 1).toString())
+    );
+    expect(indexTextSet).toEqual(expectedTextSet);
+  });
 });

@@ -5,6 +5,8 @@ export const actionTypes = {
   CORRECT_GUESS: 'CORRECT_GUESS',
   GUESS_WORD: 'GUESS_WORD',
   SET_SECRET_WORD: 'SET_SECRET_WORD',
+  RESET_GAME: 'RESET_GAME',
+  GIVE_UP: 'GIVE_UP',
 };
 
 export const guessWord = (guessedWord) => {
@@ -31,5 +33,17 @@ export const getSecretWord = () => {
         payload: response.data,
       });
     });
+  };
+};
+
+export const resetGame = () => {
+  return {
+    type: actionTypes.RESET_GAME,
+  };
+};
+
+export const giveUp = () => {
+  return {
+    type: actionTypes.GIVE_UP,
   };
 };
