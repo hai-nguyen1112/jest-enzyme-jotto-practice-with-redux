@@ -51,7 +51,9 @@ export class UnconnectedApp extends React.Component {
             <Input />
             <GuessedWords guessedWords={this.props.guessedWords} />
             <TotalGuesses guessCount={this.props.guessedWords.length} />
-            <UserEnterButton setUserEntering={this.props.setUserEntering} />
+            {this.props.guessedWords.length === 0 ? (
+              <UserEnterButton setUserEntering={this.props.setUserEntering} />
+            ) : null}
           </div>
         )}
       </div>
