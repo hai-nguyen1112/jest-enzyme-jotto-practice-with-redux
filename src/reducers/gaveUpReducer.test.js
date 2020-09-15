@@ -16,4 +16,10 @@ describe('gaveUpReducer', () => {
     });
     expect(newState).toBe(false);
   });
+  test('returns gaveUp state of `false` when user has submitted secret word', () => {
+    const newState = gaveUpReducer(true, {
+      type: actionTypes.USER_SUBMIT_WORD,
+    });
+    expect(newState).toBe(false);
+  });
 });

@@ -19,4 +19,11 @@ describe('successReducer', () => {
     });
     expect(newState).toBe(false);
   });
+  test('returns state of false upon receiving an action of type USER_SUBMIT_WORD', () => {
+    const initialState = { success: true };
+    const newState = successReducer(initialState, {
+      type: actionTypes.USER_SUBMIT_WORD,
+    });
+    expect(newState).toBe(false);
+  });
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Congrats = ({ success }) => {
+const Congrats = ({ success, userEnter }) => {
   return (
     <>
       {success && (

@@ -18,7 +18,6 @@ const NewWordButton = ({ success, resetGame, gaveUp }) => {
 NewWordButton.propTypes = {
   success: PropTypes.bool.isRequired,
   resetGame: PropTypes.func,
-  gaveUp: PropTypes.bool,
 };
 
 export default NewWordButton;

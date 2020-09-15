@@ -18,6 +18,24 @@ describe('render', () => {
     const appComponent = findByTestAttr(wrapper, 'component-app');
     expect(appComponent.length).toBe(1);
   });
+  test('does not render Congrats, SecretWordReveal, NewWordButton, Input, GuessedWords, TotalGuesses, UserEnterButton when user is entering a secret word', () => {
+    const wrapper = setup({ userEnter: 'userEntering' });
+    const appComponents = findByTestAttr(wrapper, 'components-in-app');
+    expect(appComponents.length).toBe(0);
+  });
+  test('renders EnterWordForm when user is entering a secret word', () => {
+    const wrapper = setup({ userEnter: 'userEntering' });
+    const component = findByTestAttr(
+      wrapper,
+      'component-enter-word-form-in-app'
+    );
+    expect(component.length).toBe(1);
+  });
+  test('renders ServerError component when there is an error from the server', () => {
+    const wrapper = setup({ serverError: true });
+    const component = findByTestAttr(wrapper, 'component-server-error');
+    expect(component.length).toBe(1);
+  });
 });
 
 describe('redux props', () => {
@@ -43,6 +61,38 @@ describe('redux props', () => {
     const wrapper = setup();
     const getSecretWordProp = wrapper.instance().props.getSecretWord;
     expect(getSecretWordProp).toBeInstanceOf(Function);
+  });
+  test('has access to gaveUp state as props', () => {
+    const gaveUp = false;
+    const wrapper = setup({ gaveUp: gaveUp });
+    const gaveUpProps = wrapper.instance().props.gaveUp;
+    expect(gaveUpProps).toBe(false);
+  });
+  test('has access to userEnter state as props', () => {
+    const userEnter = 'userEntering';
+    const wrapper = setup({ userEnter });
+    const userEnterProps = wrapper.instance().props.userEnter;
+    expect(userEnterProps).toBe('userEntering');
+  });
+  test('has access to resetGame action as props', () => {
+    const wrapper = setup();
+    const resetGameProp = wrapper.instance().props.resetGame;
+    expect(resetGameProp).toBeInstanceOf(Function);
+  });
+  test('has access to setUseringEntering action as props', () => {
+    const wrapper = setup();
+    const setUserEnteringProp = wrapper.instance().props.setUserEntering;
+    expect(setUserEnteringProp).toBeInstanceOf(Function);
+  });
+  test('has access to userSubmitWord action as props', () => {
+    const wrapper = setup();
+    const userSubmitWordProp = wrapper.instance().props.userSubmitWord;
+    expect(userSubmitWordProp).toBeInstanceOf(Function);
+  });
+  test('has access to serverError state as a prop', () => {
+    const wrapper = setup({ serverError: false });
+    const serverErrorProp = wrapper.instance().props.serverError;
+    expect(serverErrorProp).toBe(false);
   });
 });
 

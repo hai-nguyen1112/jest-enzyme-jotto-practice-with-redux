@@ -30,5 +30,6 @@ test('renders non empty congrats message when `success` prop is true', () => {
 
 test('doesnot throw warning with expected props', () => {
   const expectedProps = { success: false };
-  checkProps(Congrats, expectedProps);
+  const propError = checkProps(Congrats, expectedProps);
+  expect(propError).toBeUndefined();
 });

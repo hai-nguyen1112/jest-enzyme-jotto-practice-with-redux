@@ -2,12 +2,8 @@ import { actionTypes } from '../actions';
 
 export default (state = false, action) => {
   switch (action.type) {
-    case actionTypes.CORRECT_GUESS:
+    case actionTypes.SERVER_ERROR:
       return true;
-    case actionTypes.RESET_GAME:
-      return false;
-    case actionTypes.USER_SUBMIT_WORD:
-      return false;
     default:
       return state;
   }
